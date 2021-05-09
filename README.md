@@ -29,10 +29,6 @@ requests
 
 `$ python -m pip install requests`
 
-html2txt
-
-`python -m pip install html2txt`
-
 # **Usage**
 
 The program is a command line python script. There are no command line arguments.
