@@ -12,6 +12,13 @@ class Shows:
                 "Set environment string twitcluburl to the url for your twitclub stream"
             )
             quit(1)
+        try:
+            self.streamer = os.environ["twitclubstreamer"]
+        except KeyError:
+            print("Set environment string twitclubstreamer to the command line to stream the url")
+            print("For example:")
+            print("\tvlc {url}")
+            quit(2)
         r = requests.get(self.url)
         self.root = ET.fromstring(r.text)
 
@@ -31,10 +38,6 @@ class Shows:
         self.urllength = self.enclosure.attrib["length"]
         self.urltype = self.enclosure.attrib["type"]
         self.filename = self.title + ".mp4"
-        self.outputFilename = os.path.join(self.twitclubdestination, self.filename)
-        self.downloadfilename = os.path.join(
-            self.twitclubdestination, "twitclubdownload"
-        )
 
     def cleanTitle(self, title):
         newTitle = str(title)
