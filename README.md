@@ -14,7 +14,7 @@ There are two environment variables that the program depends on.
 
 `# twitclubstreamer - how to steam the url like "vlc {url}" which will cause vlc to play the url`
 
-`export twitclubstreamer=vlc {url}`
+`export twitclubstreamer="vlc {url}"`
 
 The twitcluburl is the one you get from the club twit subscriber's Podcast page. This is a manditory setting. If this is missing then the program will abort with an appropriate error message "Set environment string twitcluburl to the url for your twitclub stream" and an exit code of 1.
 
