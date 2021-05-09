@@ -1,34 +1,7 @@
 import os
-import sqlite3
 import xml.etree.ElementTree as ET
-
 import requests
 from html2txt import converters
-
-
-class Data:
-    def __init__(self):
-        sql_create = """
-        create table if not exists file (filename text unique);
-        """
-        self.data = sqlite3.connect("dltwit.sqlite")
-        self.data.executescript(sql_create)
-
-    def isfilename(self, filename):
-        sql_select = """
-        select count(*) from file where filename=?
-        """
-        row = self.data.execute(sql_select, (filename,))
-        result = row.fetchone()
-        return result[0] > 0
-
-    def addfilename(self, filename):
-        sql_insert = """
-insert into file (filename)
-values (?);        """
-        self.data.execute(sql_insert, (filename,))
-        self.data.commit()
-
 
 class Shows:
     def __init__(self):
@@ -39,14 +12,6 @@ class Shows:
                 "Set environment string twitcluburl to the url for your twitclub stream"
             )
             quit(1)
-        try:
-            self.blocksize = int(os.environ["twitclubblocksize"])
-        except KeyError:
-            self.blocksize = 1048576
-        try:
-            self.twitclubdestination = os.environ["twitclubdestination"]
-        except KeyError:
-            self.twitclubdestination = os.path.abspath("./")
         r = requests.get(self.url)
         self.root = ET.fromstring(r.text)
 
