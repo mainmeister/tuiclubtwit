@@ -43,9 +43,12 @@ class ShowVideo(npyscreen.Form):
         self.add(npyscreen.ButtonPress, name='Play', when_pressed_function=self.whenPressed)
 
     def whenPressed(self):
+        global twitshows
         url = app.getForm("DISPLAY").getItem()
         npyscreen.blank_terminal()
-        os.system(f'vlc {url}')
+        command = eval("f'"+twitshows.streamer+"'")
+        npyscreen.notify_confirm(command)
+        os.system(command)
         self.editing=False
         #npyscreen.notify_confirm(url,'What to play')
 

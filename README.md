@@ -34,3 +34,12 @@ requests
 The program is a command line python script. There are no command line arguments.
 
 `$python main.py`
+![img.png](img.png)
+
+![img_1.png](img_1.png)
+
+![img_2.png](img_2.png)
+
+![img_4.png](img_4.png)
+
+![img_5.png](img_5.png)
